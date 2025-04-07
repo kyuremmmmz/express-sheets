@@ -6,15 +6,29 @@ const router = require('./routers/Router');
 const cors = require('cors');
 const port = 3001;
 
-app.use('/api', router);
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-});
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'OPTIONS', 'DELETE', 'UPDATE'],
+    allowedHeaders: ['Content-Type'],
+    optionsSuccessStatus: 200,
+}));
+
+
+
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
-app.use(cors());
+
+
+app.use('/api', router);
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 
 app.listen(port, () => {
     console.log(`PORT ${port} started successfully`);
-
-})
+});
