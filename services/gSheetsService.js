@@ -1,16 +1,14 @@
 const { google } = require('googleapis');
-const keys = require('../keys.json');
 
-const getClient = async () => {
-    const auth = new google.auth.GoogleAuth({
-        credentials: keys,
-        scopes: ['https://www.googleapis.com/auth/spreadsheets']
-    });
-    return await auth.getClient();
-};
+const auth = new google.auth.GoogleAuth({
+    credentials: {
+        client_email: process.env.VERCEL_GOOGLE_CLIENT_EMAIL,
+        private_key: process.env.VERCEL_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    },
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+});
 
 exports.getSheet = async () => {
-    const authClient = await getClient();
-    const sheets = google.sheets({ version: 'v4', auth: authClient });
-    return sheets;
+    const authClient = await auth.getClient();
+    return google.sheets({ version: 'v4', auth: authClient });
 };
