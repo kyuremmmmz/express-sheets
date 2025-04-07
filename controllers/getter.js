@@ -27,6 +27,6 @@ exports.getResponses = async (req, res) => {
         return res.status(200).json({ data: cachedData });
     } catch (error) {
         console.error('Google Sheets fetch error:', error);
-        return res.status(500).json({ error: 'Failed to fetch data' });
+        return res.status(500).json({ error: error });
     }
 };
