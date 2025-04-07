@@ -7,7 +7,7 @@ const cors = require('cors');
 const port = 3001;
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://nextjs-portfolio-rho-virid.vercel.app'],
     methods: ['GET', 'POST', 'OPTIONS', 'DELETE', 'UPDATE'],
     allowedHeaders: ['Content-Type'],
     optionsSuccessStatus: 200,
