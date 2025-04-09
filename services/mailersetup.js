@@ -1,10 +1,10 @@
 var mailer = require('nodemailer');
 
-const cred = (message, clientEmail, ) => {
+const cred = (message, clientEmail, clientName) => {
     const mailData = {
         from: 'kurosawataki84@gmail.com', 
         to: clientEmail,
-        subject: 'I need your service',
+        subject: 'Service Inquiry',
         text: message,
         html: `<!DOCTYPE html>
             <html lang="en">
@@ -21,10 +21,11 @@ const cred = (message, clientEmail, ) => {
                 </div>
                 <!-- Content -->
                 <div style="padding: 20px; background-color: #ffffff;">
-                <b>Hey there! </b>
+                <b>Hey there! </b><br>
+                <b>From: ${clientName} </b>
                 <p>${message}</p>
+                <br>Best Regards, <br> ${clientName}
                 </div>
-                
                 <!-- Footer -->
                 <div style="text-align: center; padding: 15px; font-size: 12px; color: #666; background-color: #f8f9fa; border-top: 1px solid #e0e0e0;">
                 <p style="margin: 5px 0;">This email was sent as an inquiry for freelance services.</p>
@@ -36,7 +37,7 @@ const cred = (message, clientEmail, ) => {
         return mailData;
 }
 
-const setup = (message, clientEmail) => {
+const setup = (message, clientEmail, clientName) => {
     const transporter = mailer.createTransport({
         port: 465,
         host: 'smtp.gmail.com',
@@ -47,7 +48,7 @@ const setup = (message, clientEmail) => {
         secure: true
     });
 
-    transporter.sendMail(cred(message, clientEmail), (error, info) => { 
+    transporter.sendMail(cred(message, clientEmail, clientName), (error, info) => { 
         if (error) {
             console.log(error);
         } else {
