@@ -7,7 +7,7 @@ const cors = require('cors');
 const port = 3001;
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://nextjs-portfolio-5ald.vercel.app'],
+    origin: ['http://localhost:3000', 'https://nextjs-portfolio-5ald.vercel.app', 'http://192.168.100.7:3000'],
     methods: ['GET', 'POST', 'OPTIONS', 'DELETE', 'UPDATE'],
     allowedHeaders: ['Content-Type'],
     optionsSuccessStatus: 200,
