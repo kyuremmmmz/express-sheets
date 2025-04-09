@@ -7,7 +7,7 @@ const cors = require('cors');
 const port = 3001;
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://nextjs-portfolio-rho-virid.vercel.app', 'https://express-sheets-3.onrender.com/api/getResponses', 'https://nextjs-portfolio-5ald.vercel.app/'],
+    origin: ['http://localhost:3000', 'https://nextjs-portfolio-5ald.vercel.app'],
     methods: ['GET', 'POST', 'OPTIONS', 'DELETE', 'UPDATE'],
     allowedHeaders: ['Content-Type'],
     optionsSuccessStatus: 200,
