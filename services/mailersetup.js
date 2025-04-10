@@ -4,7 +4,7 @@ const cred = (message, clientEmail, clientName) => {
     const mailData = {
         from: clientEmail, 
         to: 'kurosawataki84@gmail.com',
-        subject: 'Service Inquiry',
+        subject: `Service inquiry from: ${clientEmail}`,
         text: message,
         html: `<!DOCTYPE html>
             <html lang="en">
