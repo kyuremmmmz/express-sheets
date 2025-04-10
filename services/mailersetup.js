@@ -2,8 +2,8 @@ var mailer = require('nodemailer');
 
 const cred = (message, clientEmail, clientName) => {
     const mailData = {
-        from: 'kurosawataki84@gmail.com', 
-        to: clientEmail,
+        from: clientEmail, 
+        to: 'kurosawataki84@gmail.com',
         subject: 'Service Inquiry',
         text: message,
         html: `<!DOCTYPE html>
